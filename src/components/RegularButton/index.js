@@ -2,9 +2,9 @@ import React from 'react'
 import { ButtonText, RegularButton } from './styles'
 
 
-const index = ({ handlePress, title }) => {
+const index = ({ handlePress, title, disabled }) => {
   return (
-    <RegularButton onPress={() => {
+    <RegularButton disabled={disabled} onPress={() => {
       handlePress()
     }}>
       <ButtonText>{title}</ButtonText>

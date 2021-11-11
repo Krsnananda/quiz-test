@@ -1,11 +1,6 @@
 import styled from "styled-components"
 import { Caption } from 'react-native-paper';
 
-export const Container = styled.View`
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-`
 export const Wrapper = styled.View`
   align-items: center;
 `

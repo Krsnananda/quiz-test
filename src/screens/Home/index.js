@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <Container>
       <Logo />
-      <RegularButton title={'Iniciar'} handlePress={() => navigate('Selection')} />
+      <RegularButton title={'Enter'} handlePress={() => navigate('Selection')} />
     </Container>
   )
 }
