@@ -5,7 +5,7 @@ import { Container } from '../../shared/styles'
 const index = () => {
   return (
     <Container>
-      <ActivityIndicator animating={true} color={Colors.cyan100} size={"large"} />
+      <ActivityIndicator animating={true} color={Colors.cyan200} size={"large"} />
     </Container>
   )
 }
