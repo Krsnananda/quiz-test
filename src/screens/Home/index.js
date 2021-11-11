@@ -1,8 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import RegularButton from '../../components/RegularButton'
-
+/**
+ * =======
+ * Components
+ * =======
+ */
 import Logo from '../../components/Logo'
+import RegularButton from '../../components/RegularButton'
+/**
+ * =======
+ * Styles
+ * =======
+ */
 import { Container } from './styles'
 
 const Home = () => {
