@@ -11,7 +11,7 @@ import { Helper, SelectedValue, Wrapper, WrapperSelector } from './styles'
 export default function Selection() {
   const { navigate } = useNavigation()
   const [value, setValue] = useState(1)
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState(1)
 
   return (
     <Container>

@@ -1,6 +1,19 @@
 import React from "react"
-import { Text } from "react-native"
+import Surfaces from './../../components/Surfaces'
+/**
+ * =======
+ * Styles
+ * =======
+ */
+import { Container } from "../../shared/styles"
+import { Box, Title } from "./styles";
 
 export default function Confirmation() {
-  return <Text>teste</Text>
+  return (
+    <Container>
+      <Title>Are you ready?</Title>
+      <Surfaces title={'Start'} type={'start'} handlePress={() => console.log('sss')} />
+      <Surfaces title={'Cancel'} type={'cancel'} handlePress={() => console.log('sss')} />
+    </Container>
+  )
 }
