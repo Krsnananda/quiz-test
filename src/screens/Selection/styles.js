@@ -18,3 +18,6 @@ export const Helper = styled.View`
   align-self: flex-end;
   margin: 0 10% 20% 0;
 `
+export const Description = styled(Caption)`
+  margin-top: 50px;
+`

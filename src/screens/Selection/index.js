@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { ToastAndroid } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
-import { IconButton, Colors } from 'react-native-paper'
+import { IconButton, Colors, Title, Caption } from 'react-native-paper'
 import CircleSizeSelector from 'react-native-circle-size-selector'
 
 import RegularButton from '../../components/RegularButton'
 import { Container } from '../../shared/styles'
-import { Helper, SelectedValue, Wrapper, WrapperSelector } from './styles'
+import { Description, Helper, SelectedValue, Wrapper, WrapperSelector } from './styles'
 
 export default function Selection() {
   const { navigate } = useNavigation()
@@ -35,6 +35,7 @@ export default function Selection() {
           >
             <SelectedValue> {value} </SelectedValue>
           </CircleSizeSelector>
+          <Description> Select the number of questions</Description>
         </WrapperSelector>
         <RegularButton title={'Select'} handlePress={() => {
           navigate('Confirmation', {
