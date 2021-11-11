@@ -21,9 +21,9 @@ const AppRoutes = () => (
       name="Selection"
       component={Selection}
       options={{
-        headerTitle: 'Movie Quiz',
+        headerTitle: '',
+        headerTransparent: true,
         headerTitleAlign: 'center',
-
       }}
     />
   </AppStack.Navigator>
