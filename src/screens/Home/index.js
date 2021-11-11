@@ -1,29 +1,17 @@
 import React, { useState } from 'react'
-import CircleSizeSelector from 'react-native-circle-size-selector'
-import { Title } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
+import RegularButton from '../../components/RegularButton'
 
-import { Container, WrapperSelector, SelectedValue, Wrapper, Submit, TitleButton } from './styles'
+import Logo from '../../components/Logo'
+import { Container } from './styles'
 
 const Home = () => {
-  const [value, setValue] = useState(3)
+  const { navigate } = useNavigation()
 
   return (
     <Container>
-      <Wrapper>
-        <WrapperSelector>
-          <CircleSizeSelector
-            minValue={1}
-            maxValue={50}
-            initialValue={3}
-            onChange={(item) => setValue(item)}
-          >
-            <SelectedValue> {value} </SelectedValue>
-          </CircleSizeSelector>
-        </WrapperSelector>
-        <Submit>
-          <TitleButton>Selecionar</TitleButton>
-        </Submit>
-      </Wrapper>
+      <Logo />
+      <RegularButton title={'Iniciar'} handlePress={() => navigate('Selection')} />
     </Container>
   )
 }

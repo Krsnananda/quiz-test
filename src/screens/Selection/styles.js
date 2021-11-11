@@ -5,22 +5,10 @@ import { Dimensions } from "react-native";
 const height = Dimensions.get('screen').height
 
 export const Container = styled.View`
-  padding: 50% 0 0 0;
   align-items: center;
+  justify-content: center;
+  flex: 1;
 `
-export const RegularButton = styled.TouchableOpacity`
-  background-color: #16ab90;
-  border-radius: 50px;
-  padding: 15px 0 15px 0;
-  width: 250px;
-  align-items: center;
-`
-export const ButtonText = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-`
-
 export const Wrapper = styled.View`
   align-items: center;
 `
