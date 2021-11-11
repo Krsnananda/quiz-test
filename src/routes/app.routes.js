@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../screens/Home'
 import Selection from '../screens/Selection'
 import Confirmation from '../screens/Confirmation'
+import Questions from '../screens/Questions'
 
 const AppStack = createStackNavigator();
 
@@ -30,6 +31,15 @@ const AppRoutes = () => (
     <AppStack.Screen
       name="Confirmation"
       component={Confirmation}
+      options={{
+        headerTitle: '',
+        headerTransparent: true,
+        headerTitleAlign: 'center',
+      }}
+    />
+    <AppStack.Screen
+      name="Questions"
+      component={Questions}
       options={{
         headerTitle: '',
         headerTransparent: true,
