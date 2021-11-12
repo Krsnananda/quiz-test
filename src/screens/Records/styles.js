@@ -13,7 +13,7 @@ export const DateRecord = styled.Text`
 `
 export const TitleQuest = styled.Text`
   font-size: 16px;
-  margin: 10px 0;
+  margin: 15px 0;
 `
 export const ButtonWrapper = styled.View`
   margin: 15px 0 30px 0;

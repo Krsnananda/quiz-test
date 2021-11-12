@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { decode } from "html-entities"
-import { Text, ScrollView, View, ToastAndroid } from "react-native"
+import { View, ToastAndroid, Alert } from "react-native"
 import { Container } from "../../shared/styles"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ActivityIndicator, Caption, Colors, Divider, Title } from "react-native-paper"
@@ -19,7 +19,6 @@ export default function Records() {
         const value = await AsyncStorage.getItem('@Quiz:record')
         if (value !== null) {
           const list = JSON.parse(value)
-          console.log(value, '------')
           setQuests(list)
         } else {
           setIsEmpty(true)
@@ -33,13 +32,31 @@ export default function Records() {
 
   }, [])
 
-  const clearData = async () => {
+  async function clearData() {
     try {
       await AsyncStorage.removeItem('@Quiz:record')
-      ToastAndroid.show('Successfully cleared!')
+      ToastAndroid.show('Successfully cleared!', ToastAndroid.SHORT)
+      setIsEmpty(true)
+      return true;
     } catch (error) {
       console.log(error)
+      return false;
     }
+  }
+
+  const showAlert = () => {
+    Alert.alert(
+      "Are you sure?",
+      "The records will be deleted!",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => clearData() }
+      ]
+    );
   }
 
   return (
@@ -50,7 +67,7 @@ export default function Records() {
     ) : (
       <Container>
         {isEmpty ? (
-          <Title>Still no records!</Title>
+          <Title>No records!</Title>
         ) : (
           <>
             <ContainerRecord>
@@ -61,7 +78,6 @@ export default function Records() {
                     <View key={i}>
                       <TitleQuest>{decode(unique.question)}</TitleQuest>
                       <Caption>Correct answer: {unique.correct_answer} </Caption>
-                      <Caption>Player: {(unique.answers && unique.answers[i].quest == i.toString()) && unique.answers[i].answer} </Caption>
                       <Divider />
                     </View>
                   ))}
@@ -69,7 +85,7 @@ export default function Records() {
               )))}
             </ContainerRecord>
             <ButtonWrapper>
-              <RegularButton title={'Clear Records'} handlePress={() => clearData()} />
+              <RegularButton title={'Clear Records'} handlePress={() => { showAlert() }} />
             </ButtonWrapper>
           </>
         )}
