@@ -42,6 +42,7 @@ export default function Selection() {
             quantity: selected
           })
         }} />
+        <RegularButton title={'Records'} outlined={true} handlePress={() => navigate('Records')} />
       </Wrapper>
     </Container>
   )
