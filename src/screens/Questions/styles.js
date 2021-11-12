@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors } from "react-native-paper"
+import { Colors, Surface, List } from "react-native-paper"
 import CardStack, { Card } from 'react-native-card-stack-swiper'
 
 export const Stack = styled(CardStack)`
@@ -25,4 +25,25 @@ export const Title = styled.Text`
 export const ContainerButton = styled.View`
   flex-direction: row;
   margin-bottom: 30px;
+`
+export const Description = styled.Text`
+  font-size: 20px;
+  flex-wrap: wrap;
+`
+export const ScoreBlock = styled(Surface)`
+  width: 90%; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px;
+  border-radius: 20px;
+  height: 150px;
+`
+export const ScoreTitle = styled.Text`
+  align-self: center;
+  font-size: 20px; 
+  font-weight: bold;
+`
+export const Section = styled(List.Section)`
+  flex-direction: row;
+  align-self: center;
 `

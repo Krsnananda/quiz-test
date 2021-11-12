@@ -5,6 +5,7 @@ import Home from '../screens/Home'
 import Selection from '../screens/Selection'
 import Confirmation from '../screens/Confirmation'
 import Questions from '../screens/Questions'
+import Answers from '../screens/Answers'
 
 const AppStack = createStackNavigator();
 
@@ -43,6 +44,14 @@ const AppRoutes = () => (
       options={{
         headerTitle: '',
         headerTransparent: true,
+        headerTitleAlign: 'center',
+      }}
+    />
+    <AppStack.Screen
+      name="Answers"
+      component={Answers}
+      options={{
+        headerTitle: 'Answers',
         headerTitleAlign: 'center',
       }}
     />
