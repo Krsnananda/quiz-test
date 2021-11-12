@@ -24,7 +24,6 @@ export const Title = styled.Text`
 `
 export const ContainerButton = styled.View`
   flex-direction: row;
-  margin-bottom: 30px;
 `
 export const Description = styled.Text`
   font-size: 20px;
@@ -46,4 +45,10 @@ export const ScoreTitle = styled.Text`
 export const Section = styled(List.Section)`
   flex-direction: row;
   align-self: center;
+`
+export const ContainerAnswerButton = styled.View`
+  margin-top: 30%;
+`
+export const ContainerActions = styled.View`
+  margin-top: 60%;
 `

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 /**
  * ========
@@ -23,7 +22,9 @@ import {
   ScoreBlock,
   ScoreTitle,
   Description,
-  Section
+  Section,
+  ContainerAnswerButton,
+  ContainerActions
 } from "./styles"
 /**
  * ========
@@ -31,6 +32,7 @@ import {
  * ========
  */
 import api from "../../services/api"
+import RegularButton from "../../components/RegularButton"
 
 export default function Questions({ route }) {
   const questions = route.params.questions
@@ -41,7 +43,6 @@ export default function Questions({ route }) {
   const [corretAnswers, setCorrectAnswers] = useState(0)
   const [wrongAnswers, setWrongAnswers] = useState(0)
   const [template, setTemplate] = useState([])
-  const [report, setReport] = useState([])
   const { navigate } = useNavigation()
 
   useEffect(() => {
@@ -109,13 +110,33 @@ export default function Questions({ route }) {
                 />
               </Section>
             </ScoreBlock>
-            <Button
-              onPress={() => navigate('Answers', {
-                answers: template,
-                list: list
-              })}
-              title={'teste'}
-            />
+            <ContainerAnswerButton>
+              <RegularButton
+                handlePress={() => navigate('Answers', {
+                  answers: template,
+                  list: list
+                })}
+                title={'Answers'}
+              />
+            </ContainerAnswerButton>
+            <ContainerActions>
+              <ContainerButton>
+                <IconButton
+                  style={{ marginHorizontal: 60 }}
+                  icon="reload"
+                  color={Colors.cyan300}
+                  size={50}
+                  onPress={() => navigate('Selection')}
+                />
+                <IconButton
+                  style={{ marginHorizontal: 60 }}
+                  icon="archive"
+                  color={Colors.blueGrey300}
+                  size={50}
+                  onPress={() => swiping.swipeRight()}
+                />
+              </ContainerButton>
+            </ContainerActions>
           </>
         )}
       </Container>
