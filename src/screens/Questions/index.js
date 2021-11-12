@@ -33,6 +33,7 @@ import {
  */
 import api from "../../services/api"
 import RegularButton from "../../components/RegularButton"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export default function Questions({ route }) {
   const questions = route.params.questions
@@ -49,14 +50,53 @@ export default function Questions({ route }) {
     setIsLoading(true)
 
     api.get(`api.php?amount=${questions}&category=11&type=boolean`).then((res) => {
-      console.log('========')
-      console.log(res.data)
-      console.log('========')
       setList(res.data.results)
       setIsLoading(false)
     }).catch((error) => console.log(error))
 
   }, [])
+
+  const storeDate = async (questions, answers) => {
+    const today = new Date()
+    const log = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()} - ${today.getHours()}:${today.getMinutes()}`
+
+    const list = {
+      game: [
+        {
+          quests: questions,
+          date: log,
+          answers: answers
+        }
+      ]
+    }
+
+    try {
+      const value = await AsyncStorage.getItem('@Quiz:record')
+      if (value !== null) {
+        const oldRecords = JSON.parse(value)
+        const updatedList = oldRecords.game.push({
+          quests: questions,
+          date: log,
+          answers: answers
+        })
+
+        try {
+          await AsyncStorage.setItem('@Quiz:record', JSON.stringify(oldRecords))
+        } catch (error) {
+          console.log(error)
+        }
+
+      } else {
+        try {
+          await AsyncStorage.setItem('@Quiz:record', JSON.stringify(list))
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     isLoading ? (
@@ -133,7 +173,10 @@ export default function Questions({ route }) {
                   icon="archive"
                   color={Colors.blueGrey300}
                   size={50}
-                  onPress={() => swiping.swipeRight()}
+                  onPress={() => {
+                    storeDate(list, template)
+                    navigate('Records')
+                  }}
                 />
               </ContainerButton>
             </ContainerActions>

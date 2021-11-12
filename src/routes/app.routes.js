@@ -6,6 +6,7 @@ import Selection from '../screens/Selection'
 import Confirmation from '../screens/Confirmation'
 import Questions from '../screens/Questions'
 import Answers from '../screens/Answers'
+import Records from '../screens/Records'
 
 const AppStack = createStackNavigator();
 
@@ -52,6 +53,14 @@ const AppRoutes = () => (
       component={Answers}
       options={{
         headerTitle: 'Answers',
+        headerTitleAlign: 'center',
+      }}
+    />
+    <AppStack.Screen
+      name="Records"
+      component={Records}
+      options={{
+        headerTitle: 'Records',
         headerTitleAlign: 'center',
       }}
     />
