@@ -1,3 +1,4 @@
+import { List } from "react-native-paper"
 import styled from "styled-components"
 
 export const ContainerRecord = styled.ScrollView`
@@ -17,4 +18,12 @@ export const TitleQuest = styled.Text`
 `
 export const ButtonWrapper = styled.View`
   margin: 15px 0 30px 0;
+`
+export const Section = styled(List.Section)`
+  flex-direction: row;
+  align-self: center;
+`
+export const Description = styled.Text`
+  font-size: 20px;
+  flex-wrap: wrap;
 `

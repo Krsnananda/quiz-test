@@ -3,8 +3,8 @@ import { decode } from "html-entities"
 import { View, ToastAndroid, Alert } from "react-native"
 import { Container } from "../../shared/styles"
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import { ActivityIndicator, Caption, Colors, Divider, Title } from "react-native-paper"
-import { ButtonWrapper, ContainerRecord, DateRecord, TitleQuest } from './styles'
+import { ActivityIndicator, Caption, Colors, Divider, List, Subheading, Title } from "react-native-paper"
+import { ButtonWrapper, ContainerRecord, DateRecord, Description, Section, TitleQuest } from './styles'
 import RegularButton from './../../components/RegularButton'
 
 export default function Records() {
@@ -74,6 +74,19 @@ export default function Records() {
               {(quests && quests.game) && (quests.game.map((item, index) => (
                 <View key={index}>
                   <DateRecord>{item.date}</DateRecord>
+                  <Subheading>Total Score:</Subheading>
+                  <Section>
+                    <List.Item
+                      style={{ width: '50%' }}
+                      title={<Description>{item.correct}</Description>}
+                      left={() => <List.Icon color={Colors.green200} icon="check" />}
+                    />
+                    <List.Item
+                      style={{ width: '50%' }}
+                      title={<Description>{item.wrong}</Description>}
+                      left={() => <List.Icon color={Colors.red200} icon="close" />}
+                    />
+                  </Section>
                   {item.quests.map((unique, i) => (
                     <View key={i}>
                       <TitleQuest>{decode(unique.question)}</TitleQuest>

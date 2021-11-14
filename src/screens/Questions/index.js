@@ -56,16 +56,22 @@ export default function Questions({ route }) {
 
   }, [])
 
+  const handleHours = (time) => {
+    return time < 10 ? '0' + time : time
+  }
+
   const storeDate = async (questions, answers) => {
     const today = new Date()
-    const log = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()} - ${today.getHours()}:${today.getMinutes()}`
+    const log = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()} - ${handleHours(today.getHours())}:${handleHours(today.getMinutes())}`
 
     const list = {
       game: [
         {
           quests: questions,
           date: log,
-          answers: answers
+          answers: answers,
+          correct: corretAnswers,
+          wrong: wrongAnswers
         }
       ]
     }
@@ -77,7 +83,9 @@ export default function Questions({ route }) {
         const updatedList = oldRecords.game.push({
           quests: questions,
           date: log,
-          answers: answers
+          answers: answers,
+          correct: corretAnswers,
+          wrong: wrongAnswers
         })
 
         try {

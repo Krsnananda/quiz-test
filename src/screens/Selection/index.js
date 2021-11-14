@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { ToastAndroid } from 'react-native'
-import { useNavigation } from '@react-navigation/core'
+import { useNavigation } from '@react-navigation/native'
+import { StackActions } from '@react-navigation/native';
+
 import { IconButton, Colors, Title, Caption } from 'react-native-paper'
 import CircleSizeSelector from 'react-native-circle-size-selector'
 
@@ -9,7 +11,7 @@ import { Container } from '../../shared/styles'
 import { Description, Helper, SelectedValue, Wrapper, WrapperSelector } from './styles'
 
 export default function Selection() {
-  const { navigate } = useNavigation()
+  const { navigate, dispatch } = useNavigation()
   const [value, setValue] = useState(1)
   const [selected, setSelected] = useState(1)
 
@@ -42,7 +44,10 @@ export default function Selection() {
             quantity: selected
           })
         }} />
-        <RegularButton title={'Records'} outlined={true} handlePress={() => navigate('Records')} />
+        <RegularButton title={'Records'} outlined={true} handlePress={() => {
+          const pushAction = StackActions.push('Records')
+          dispatch(pushAction)
+        }} />
       </Wrapper>
     </Container>
   )
