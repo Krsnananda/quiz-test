@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, StackActions } from '@react-navigation/native'
 /**
  * ========
  * Components
@@ -44,7 +44,8 @@ export default function Questions({ route }) {
   const [corretAnswers, setCorrectAnswers] = useState(0)
   const [wrongAnswers, setWrongAnswers] = useState(0)
   const [template, setTemplate] = useState([])
-  const { navigate } = useNavigation()
+  const { navigate, dispatch } = useNavigation()
+  const [isStored, setIsStored] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -182,8 +183,12 @@ export default function Questions({ route }) {
                   color={Colors.blueGrey300}
                   size={50}
                   onPress={() => {
-                    storeDate(list, template)
-                    navigate('Records')
+                    if (isStored == false) {
+                      storeDate(list, template)
+                      setIsStored(true)
+                    }
+                    const pushAction = StackActions.push('Records')
+                    dispatch(pushAction)
                   }}
                 />
               </ContainerButton>
