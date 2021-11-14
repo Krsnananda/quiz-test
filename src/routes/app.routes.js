@@ -16,7 +16,7 @@ const AppRoutes = () => (
       name="Home"
       component={Home}
       options={{
-        headerTitle: 'Movie Quiz',
+        headerTitle: 'Quiz',
         headerLeft: null,
         headerTitleAlign: 'center',
       }}

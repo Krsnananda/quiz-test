@@ -49,7 +49,7 @@ export default function Questions({ route }) {
   useEffect(() => {
     setIsLoading(true)
 
-    api.get(`api.php?amount=${questions}&category=11&type=boolean`).then((res) => {
+    api.get(`api.php?amount=${questions}&type=boolean`).then((res) => {
       setList(res.data.results)
       setIsLoading(false)
     }).catch((error) => console.log(error))
