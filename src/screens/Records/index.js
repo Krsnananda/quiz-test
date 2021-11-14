@@ -17,7 +17,6 @@ export default function Records() {
     async function getData() {
       try {
         const value = await AsyncStorage.getItem('@Quiz:record')
-        console.log(value, isEmpty)
         if (value !== null) {
           const list = JSON.parse(value)
           setQuests(list)
